@@ -14,6 +14,7 @@
   <meta property="og:image:alt" content="LazyDeals PC game watchlist with game artwork and price targets">
   <link rel="icon" href="./assets/icon128.png" type="image/png">
   <link rel="stylesheet" href="./site.css">
+  <script type="module" src="./offers.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -35,10 +36,20 @@
         <p class="small-note">No LazyDeals account required. Chrome link will appear after its listing is public.</p>
       </div>
       <figure class="hero-visual">
-        <div class="screenshot"><img src="./assets/watchlist.jpg" alt="LazyDeals watchlist showing tracked PC games with thumbnails and target-price controls" width="1280" height="800" fetchpriority="high"></div>
-        <figcaption>The full-page extension app. Screenshot uses sample game data.</figcaption>
+        <div class="screenshot"><img src="./assets/watchlist.jpg" alt="LazyDeals watchlist showing sample targets for DARK SOULS II: Scholar of the First Sin and Hollow Knight: Silksong" width="870" height="500" fetchpriority="high"></div>
+        <figcaption>Watchlist crop from the full-page app. Targets are staged examples.</figcaption>
       </figure>
     </div>
+    <section class="section shell live-offers" aria-labelledby="offers-heading">
+      <div class="offer-heading"><div><h2 id="offers-heading">Reported 100%-off offers.</h2><p>Normally paid PC games reported at 100% off for a limited time. These reports are separate from your watchlist.</p></div><p class="offer-note">Reports may be late, withdrawn, or unavailable for your region or account. Check the store before claiming.</p></div>
+      <p id="offer-status" class="offer-status" role="status" aria-live="polite">Loading current reports…</p>
+      <div class="offer-rail" aria-label="Current reported offers">
+        <button id="offer-previous" class="offer-arrow" type="button" aria-label="Previous offer" hidden>←</button>
+        <div id="offer-track" class="offer-track" tabindex="-1" aria-label="Scroll reported offers"></div>
+        <button id="offer-next" class="offer-arrow" type="button" aria-label="Next offer" hidden>→</button>
+      </div>
+      <p class="offer-footnote">LazyDeals can notify you about these offers in the extension. The notification switch does not hide them.</p>
+    </section>
     <div class="shell"><hr class="divider"><div class="plain-intro"><strong>One watchlist. Two ways to check prices.</strong><p>Choose the mode that fits how you shop. Your saved targets remain when you switch modes; only the selected mode runs background checks.</p></div></div>
     <section class="section shell" aria-labelledby="modes-heading">
       <h2 id="modes-heading">Pick the price that matters to you.</h2>
@@ -54,10 +65,6 @@
     <section class="section shell proof reverse" aria-labelledby="bundles-heading">
       <div class="proof-copy"><h2 id="bundles-heading">A budget for the whole group.</h2><p>Put at least two watched games in a budget bundle. LazyDeals totals each game’s current eligible price and can alert you when the group falls under your saved budget or drops further.</p><p class="muted">Bundle budgets are separate for All Stores and Regional pricing. A bundle is a shopping plan, not a store-sold package.</p></div>
       <figure class="proof-image"><div class="screenshot"><img src="./assets/bundles.jpg" alt="LazyDeals budget-bundle editor with selected watched games and a total budget" width="1280" height="800" loading="lazy"></div><figcaption>Build a budget bundle from games you already watch.</figcaption></figure>
-    </section>
-    <section class="section shell proof" aria-labelledby="offers-heading">
-      <div class="proof-copy"><h2 id="offers-heading">Reported 100%-off offers.</h2><p>Browse a rail of normally paid PC games reported at 100% off in the full-page app. These reports are separate from your watchlist and pricing mode.</p><p class="muted">You can turn their notifications off without hiding the rail. Offers may be late, withdrawn, or unavailable for your region or account.</p><p class="offer-note">Always confirm the offer on the store page before claiming.</p></div>
-      <figure class="proof-image"><div class="screenshot"><img src="./assets/offers.jpg" alt="LazyDeals 100%-off report rail with game artwork and offer cards" width="1280" height="800" loading="lazy"></div><figcaption>Offer cards are reports, not a guarantee of availability.</figcaption></figure>
     </section>
     <section class="section shell faq" aria-labelledby="questions-heading"><h2 id="questions-heading">Before you install.</h2><div class="faq-list">
       <details><summary>Do I need an account?</summary><p>No LazyDeals account is required. Your watchlist choices are saved through your browser’s extension storage. <a href="https://bahimehdi.github.io/lazydeals-privacy/">Read the privacy policy</a>.</p></details>

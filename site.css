@@ -76,6 +76,32 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 .import-steps strong { font-size: 1.15rem; }
 .import-steps span { color: var(--color-muted); }
 .offer-note { margin-top: var(--space-6); padding-top: var(--space-4); border-top: var(--rule-thin) solid var(--color-rule); color: var(--color-muted); font: .83rem/1.55 var(--font-ui); }
+.live-offers { padding-top: var(--space-16); }
+.offer-heading { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-12); align-items: end; }
+.offer-heading h2 { max-width: 15ch; }
+.offer-heading .offer-note { max-width: 28rem; margin: 0; }
+.offer-status, .offer-footnote { color: var(--color-muted); font: .8rem/1.5 var(--font-ui); }
+.offer-status { margin-top: var(--space-8); }
+.offer-footnote { margin-top: var(--space-4); }
+.offer-rail { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.offer-track { display: flex; gap: var(--space-3); min-width: 0; width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.offer-track::-webkit-scrollbar { display: none; }
+.offer-track:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+.offer-track.offer-two .offer-card { flex-basis: calc((100% - var(--space-3)) / 2); }
+.offer-card { display: flex; flex: 0 0 min(31rem, 88%); min-width: 0; min-height: 15rem; overflow: hidden; scroll-snap-align: start; border: var(--rule-thin) solid var(--color-rule); background: var(--color-paper-raised); color: var(--color-ink); }
+.offer-card img { flex: 0 0 34%; width: 34%; min-width: 0; height: auto; object-fit: cover; }
+.offer-card-copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); min-width: 0; padding: var(--space-4); }
+.offer-card h3 { margin: 0; font: 900 clamp(1.2rem, 2vw, 1.65rem)/1.12 var(--font-display); letter-spacing: -.035em; }
+.offer-card p { margin: 0; color: var(--color-muted); font: .8rem/1.4 var(--font-ui); overflow-wrap: anywhere; }
+.offer-store { color: var(--color-signal); font: 700 .7rem/1.3 var(--font-ui); text-transform: uppercase; letter-spacing: .06em; }
+.offer-card a { margin-top: auto; color: var(--color-ink); font: 800 .78rem/1.25 var(--font-ui); text-underline-offset: .35em; white-space: nowrap; }
+.offer-card a:hover { color: var(--color-accent-hover); }
+.offer-arrow { flex: none; width: 2.75rem; height: 2.75rem; border: var(--rule-thin) solid var(--color-rule); background: var(--color-paper-raised); color: var(--color-ink); font: 800 1.1rem/1 var(--font-ui); cursor: pointer; }
+.offer-arrow:hover:not(:disabled) { border-color: var(--color-accent); color: var(--color-accent); }
+.offer-arrow:active:not(:disabled) { transform: translateY(1px); }
+.offer-arrow:disabled { opacity: .5; cursor: not-allowed; }
+.offer-arrow:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+.offer-arrow[hidden] { display: none; }
 .install { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-6); align-items: end; border-top: var(--rule-thin) solid var(--color-rule); padding-block: var(--space-24); }
 .install h2 { margin: 0; max-width: 15ch; font: 900 var(--text-h2)/1.04 var(--font-display); letter-spacing: -.055em; }
 .install p { margin-bottom: 0; color: var(--color-muted); }
@@ -105,7 +131,7 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 .help-body li { margin-bottom: var(--space-3); }
 .help-body a { text-underline-offset: .25em; }
 @media (max-width: 800px) {
-  .hero, .proof, .proof.reverse, .mode-grid, .faq, .plain-intro, .help-layout { grid-template-columns: minmax(0, 1fr); }
+  .hero, .proof, .proof.reverse, .mode-grid, .faq, .plain-intro, .help-layout, .offer-heading { grid-template-columns: minmax(0, 1fr); }
   .hero { align-items: start; }
   .hero h1 { max-width: 12ch; }
   .proof.reverse .proof-copy, .proof.reverse .proof-image { order: initial; }
@@ -128,8 +154,18 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
   .foot-mark { font-size: clamp(2.5rem, 14vw, 5rem); }
   .import-steps li { grid-template-columns: 2rem minmax(0, 1fr); }
   .import-steps span { grid-column: 2; }
+  .offer-card { flex-basis: 100%; min-height: 13rem; }
+  .offer-rail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .offer-track { grid-column: 1 / -1; grid-row: 1; }
+  .offer-arrow { grid-row: 2; }
+  #offer-previous { grid-column: 1; justify-self: start; }
+  #offer-next { grid-column: 2; justify-self: end; }
+  .offer-card img { flex-basis: 30%; width: 30%; }
+  .offer-card-copy { padding: var(--space-3); }
+  .offer-card h3 { font-size: 1.15rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .button { transition: none; }
+  .offer-track { scroll-behavior: auto; }
 }
