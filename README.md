@@ -8,7 +8,7 @@ To preview locally, generate `offers.json` into a separate temporary copy of the
 
 ## Publication gates
 
-- Edge Add-ons is the only active store CTA until the Chrome listing is publicly accessible and independently verified. Replace both non-clickable Chrome status labels with the verified listing URL only then.
+- The Chrome Web Store and Edge Add-ons CTAs point to verified public listings. The Chrome badge is Google's official dark-background variant, resized without modification.
 - The production hostname is `https://lazydeals.tech/`. Keep the self-canonical URLs, Open Graph image URLs, `robots.txt`, and sitemap aligned with that hostname; do not index temporary previews.
 - Test the deployed homepage, `/help/`, store destination, privacy policy, support email and mobile layouts. Submit the production hostname to Google Search Console; indexing and ranking are not guaranteed.
 - The hero image is a crop of the real 1.1.0 extension UI in an isolated demo profile. It shows staged $10 Deaths Door and Silksong targets. Deaths Door's Steam ($1.99), Fanatical and Gamesplanet ($3.99), and Humble Store and GOG ($4.99) discounted offers were checked against the CheapShark batch response on October 6, 2026, then staged in the profile for a reproducible screenshot. This is a dated example, not a live quote. Refresh screenshots when the shipped UI materially changes, and check them for personal data or Share-link tokens.
