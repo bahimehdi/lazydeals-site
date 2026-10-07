@@ -32,8 +32,8 @@ jobs:
       - name: Prepare static artifact and current reports
         run: |
           mkdir -p _site
-          cp index.html site.css tokens.css robots.txt sitemap.xml offers.js offers-data.mjs _site/
-          cp -R assets help _site/
+          cp index.html site.css tokens.css robots.txt sitemap.xml offers.js offers-data.mjs motion.js _site/
+          cp -R assets help vendor _site/
           if [ -f CNAME ]; then cp CNAME _site/; fi
           touch _site/.nojekyll
           node scripts/build-offers.mjs _site/offers.json

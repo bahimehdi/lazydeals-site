@@ -10,6 +10,8 @@
   --color-brand-red: oklch(66% 0.235 25);
   --color-signal: oklch(84% 0.175 88);
   --color-focus: oklch(84% 0.175 88);
+  --color-depth-blue: oklch(75% 0.17 237 / 0.29);
+  --color-depth-red: oklch(66% 0.235 25 / 0.25);
   --font-display: "Arial Black", "Segoe UI Black", sans-serif;
   --font-body: Georgia, "Times New Roman", serif;
   --font-ui: "Segoe UI", Tahoma, sans-serif;
@@ -26,7 +28,9 @@
   --text-h2: clamp(2rem, 4vw, 3.75rem);
   --text-body: 1.125rem;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --dur-short: 180ms;
+  --dur-curtain: 800ms;
   --rule-thin: 1px;
   --radius-none: 0;
 }

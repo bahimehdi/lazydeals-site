@@ -4,20 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PC Game Price Tracker &amp; Alerts | LazyDeals</title>
-  <meta name="description" content="Track PC game prices, set target prices for preferred stores or Steam, and get browser alerts. Import your Steam wishlist manually with LazyDeals.">
+  <meta name="description" content="Track PC game prices without checking stores every day. Set a target for games you want, and get browser alerts when a qualifying deal drops below it.">
   <link rel="canonical" href="https://lazydeals.tech/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PC Game Price Tracker &amp; Alerts | LazyDeals">
-  <meta property="og:description" content="Watch PC game prices, set your targets, and get alerts when a qualifying price reaches them.">
+  <meta property="og:description" content="Set your price, let LazyDeals check in the background, and get a browser alert when a qualifying PC game deal drops below your target.">
   <meta property="og:url" content="https://lazydeals.tech/">
   <meta property="og:image" content="https://lazydeals.tech/assets/watchlist-deaths-door.jpg">
   <meta property="og:image:alt" content="LazyDeals PC game watchlist with game artwork and price targets">
   <link rel="icon" href="./assets/icon128.png" type="image/png">
+  <script>if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get("motion") === "preview") document.documentElement.classList.add("motion-preview");</script>
+  <link rel="stylesheet" href="./vendor/locomotive-scroll.css">
   <link rel="stylesheet" href="./site.css">
+  <script defer src="./vendor/locomotive-scroll.min.js"></script>
+  <script defer src="./motion.js"></script>
   <script type="module" src="./offers.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="entry-curtain" aria-hidden="true">
+    <div class="entry-curtain-inner">
+      <div class="entry-brand"><img src="./assets/icon128.png" alt="" width="88" height="88"><span><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></div>
+      <span class="entry-rule"></span>
+    </div>
+  </div>
   <header class="site-head">
     <div class="shell head-inner">
       <a class="brand" href="./" aria-label="LazyDeals home"><img src="./assets/icon128.png" alt="" width="52" height="52"><span class="brand-name"><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></a>
@@ -25,23 +35,27 @@
     </div>
   </header>
   <main id="main">
+    <section class="hero-stage" aria-label="LazyDeals introduction">
     <div class="shell hero">
       <div class="hero-copy">
-        <h1>PC games. <span class="accent">Right price.</span></h1>
-        <p class="lead">LazyDeals is a PC game price tracker for the games you want in one watchlist. Set target prices, and the extension checks the active pricing mode in the background.</p>
+        <h1><span class="hero-line">PC game</span><span class="hero-line">price alerts.</span><span class="hero-line accent">No constant checking.</span></h1>
+        <p class="lead">Add games to your watchlist, set the price you’d pay, and let LazyDeals check in the background. Get a browser alert when a qualifying offer falls below your target or drops lower again.</p>
         <div class="hero-actions">
           <a class="store-badge" href="https://chromewebstore.google.com/detail/lazydeals/dlcikhpiigmpciddcdjclepnppcachni" aria-label="Get LazyDeals for Chrome on the Chrome Web Store"><img src="./assets/chrome-web-store-badge.png" alt="Available in the Chrome Web Store" width="340" height="96"></a>
           <a class="store-badge" href="https://microsoftedge.microsoft.com/addons/detail/lazydeals/hldbfjjaedkheeglkflhnkkppgeiihhm" aria-label="Get LazyDeals for Edge on Microsoft Edge Add-ons"><img src="./assets/edge-addons-badge.png" alt="Get it from Microsoft Edge" width="1178" height="312"></a>
         </div>
         <p class="small-note">No LazyDeals account required. Available for Chrome and Microsoft Edge.</p>
       </div>
-      <figure class="hero-visual">
+      <figure class="hero-visual" data-scroll data-scroll-speed="-0.15" data-scroll-enable-touch-speed>
         <div class="screenshot"><img src="./assets/watchlist-deaths-door.jpg" alt="LazyDeals watchlist showing Deaths Door at a $10 target with five discounted store offers, plus Hollow Knight: Silksong at a $10 target" width="870" height="650" fetchpriority="high"></div>
         <figcaption>Full-page app example. Prices captured October 6, 2026; offers can change.</figcaption>
       </figure>
     </div>
-    <section class="section shell live-offers" aria-labelledby="offers-heading">
-      <div class="offer-heading"><div><h2 id="offers-heading">Reported 100%-off offers.</h2><p>Normally paid PC games reported at 100% off for a limited time. These reports are separate from your watchlist.</p></div><p class="offer-note">Reports may be late, withdrawn, or unavailable for your region or account. Check the store before claiming.</p></div>
+    <div class="hero-endline shell"><span>Set a target. Leave the checking to us.</span><a href="#offers">↓ Scroll to explore</a></div>
+    </section>
+    <section id="offers" class="section live-offers" aria-labelledby="offers-heading" tabindex="-1">
+      <div class="shell offers-inner">
+      <div class="offer-heading"><div><h2 id="offers-heading" class="scene-reveal" data-scroll>Reported 100%-off offers.</h2><p>Normally paid PC games reported at 100% off for a limited time. These reports are separate from your watchlist.</p></div><p class="offer-note">Reports may be late, withdrawn, or unavailable for your region or account. Check the store before claiming.</p></div>
       <p id="offer-status" class="offer-status" role="status" aria-live="polite">Loading current reports…</p>
       <div class="offer-rail" aria-label="Current reported offers">
         <button id="offer-previous" class="offer-arrow" type="button" aria-label="Previous offer" hidden>←</button>
@@ -49,31 +63,32 @@
         <button id="offer-next" class="offer-arrow" type="button" aria-label="Next offer" hidden>→</button>
       </div>
       <p class="offer-footnote">LazyDeals can notify you about these offers in the extension. The notification switch does not hide them.</p>
+      </div>
     </section>
-    <div class="shell"><hr class="divider"><div class="plain-intro"><strong>One watchlist. Two ways to check prices.</strong><p>Choose the mode that fits how you shop. Your saved targets remain when you switch modes; only the selected mode runs background checks.</p></div></div>
-    <section class="section shell" aria-labelledby="modes-heading">
+    <div class="statement-band"><div class="shell plain-intro"><strong>One watchlist.<br>Two ways to check prices.</strong><p>Choose the mode that fits how you shop. Your saved targets remain when you switch modes; only the selected mode runs background checks.</p></div><div class="word-cascade" data-scroll data-scroll-css-progress aria-hidden="true"><span style="--drift: -26vw">ONE WATCHLIST</span><span style="--drift: 19vw">ONE WATCHLIST</span><span style="--drift: -13vw">ONE WATCHLIST</span><span style="--drift: 23vw">ONE WATCHLIST</span><span style="--drift: -20vw">ONE WATCHLIST</span></div></div>
+    <section class="section shell modes-stage" aria-labelledby="modes-heading">
       <h2 id="modes-heading">Pick the price that matters to you.</h2>
       <div class="mode-grid">
-        <div class="mode"><h3>All Stores</h3><p>Set a USD target for each game. LazyDeals checks offers from the stores you prefer and shows a qualifying offer when its price falls below your target.</p><p class="detail">Preferred stores · USD targets</p></div>
-        <div class="mode"><h3>Regional</h3><p>Set a target in the currency Steam returns to your browser for a Steam-linked game. LazyDeals compares only matching currencies; it does not convert prices.</p><p class="detail">Steam-linked games · returned currency</p></div>
+        <div class="mode" data-scroll data-scroll-speed="0.22" data-scroll-enable-touch-speed><h3>All Stores</h3><p>Set a USD target for each game. LazyDeals checks offers from the stores you prefer and shows a qualifying offer when its price falls below your target.</p><p class="detail">Preferred stores · USD targets</p></div>
+        <div class="mode" data-scroll data-scroll-speed="-0.18" data-scroll-enable-touch-speed><h3>Regional</h3><p>Set a target in the currency Steam returns to your browser for a Steam-linked game. LazyDeals compares only matching currencies; it does not convert prices.</p><p class="detail">Steam-linked games · returned currency</p></div>
       </div>
     </section>
     <section class="section shell proof" aria-labelledby="wishlist-heading">
-      <div class="proof-copy"><h2 id="wishlist-heading">Bring your Steam wishlist in.</h2><p>If you already keep a Steam wishlist, paste its Share link to preview matches and targets before saving. You can also find games one at a time.</p><p class="muted">Import is a manual shortcut, not a permanent Steam-account connection. Update it when you want to review the shared list again.</p><a href="./help/#wishlist">How wishlist import works</a></div>
-      <ol class="import-steps" aria-label="Steam wishlist import steps"><li><strong>Copy</strong><span>Use Steam’s wishlist Share link.</span></li><li><strong>Review</strong><span>Check matched games and targets.</span></li><li><strong>Save</strong><span>Track only the games you choose.</span></li></ol>
+      <div class="proof-copy"><h2 id="wishlist-heading" class="scene-reveal" data-scroll>Bring your Steam wishlist in.</h2><p>If you already keep a Steam wishlist, paste its Share link to preview matches and targets before saving. You can also find games one at a time.</p><p class="muted">Import is a manual shortcut, not a permanent Steam-account connection. Update it when you want to review the shared list again.</p><a href="./help/#wishlist">How wishlist import works</a></div>
+      <ol class="import-steps" aria-label="Steam wishlist import steps"><li data-scroll data-scroll-speed="0.12" data-scroll-enable-touch-speed><strong>Copy</strong><span>Use Steam’s wishlist Share link.</span></li><li data-scroll data-scroll-speed="0.04" data-scroll-enable-touch-speed><strong>Review</strong><span>Check matched games and targets.</span></li><li data-scroll data-scroll-speed="-0.06" data-scroll-enable-touch-speed><strong>Save</strong><span>Track only the games you choose.</span></li></ol>
     </section>
     <section class="section shell proof reverse" aria-labelledby="bundles-heading">
-      <div class="proof-copy"><h2 id="bundles-heading">A budget for the whole group.</h2><p>Put at least two watched games in a budget bundle. LazyDeals totals each game’s current eligible price and can alert you when the group falls under your saved budget or drops further.</p><p class="muted">Bundle budgets are separate for All Stores and Regional pricing. A bundle is a shopping plan, not a store-sold package.</p></div>
-      <figure class="proof-image"><div class="screenshot"><img src="./assets/bundles-metroidvanias.jpg" alt="Metroidvanias budget bundle with Blasphemous, Hollow Knight, Hollow Knight: Silksong, Nine Sols, and Death's Door under a $50 budget" width="870" height="440" loading="lazy"></div><figcaption>Example $50 bundle. Displayed game prices are staged, not live offers.</figcaption></figure>
+      <div class="proof-copy"><span class="budget-figure" aria-hidden="true" data-scroll data-scroll-speed="0.28" data-scroll-enable-touch-speed>$50</span><h2 id="bundles-heading" class="scene-reveal" data-scroll>A budget for the whole group.</h2><p>Put at least two watched games in a budget bundle. LazyDeals totals each game’s current eligible price and can alert you when the group falls under your saved budget or drops further.</p><p class="muted">Bundle budgets are separate for All Stores and Regional pricing. A bundle is a shopping plan, not a store-sold package.</p></div>
+      <figure class="proof-image" data-scroll data-scroll-speed="-0.16" data-scroll-enable-touch-speed><div class="screenshot"><img src="./assets/bundles-metroidvanias.jpg" alt="Metroidvanias budget bundle with Blasphemous, Hollow Knight, Hollow Knight: Silksong, Nine Sols, and Death's Door under a $50 budget" width="870" height="440" loading="lazy"></div><figcaption>Example $50 bundle. Displayed game prices are staged, not live offers.</figcaption></figure>
     </section>
-    <section class="section shell faq" aria-labelledby="questions-heading"><h2 id="questions-heading">Before you install.</h2><div class="faq-list">
+    <section class="section shell faq" aria-labelledby="questions-heading"><h2 id="questions-heading" class="scene-reveal" data-scroll>Before you install.</h2><div class="faq-list">
       <details><summary>Do I need an account?</summary><p>No LazyDeals account is required. Your watchlist choices are saved through your browser’s extension storage. <a href="https://bahimehdi.github.io/lazydeals-privacy/">Read the privacy policy</a>.</p></details>
       <details><summary>Does switching modes lose my targets?</summary><p>No. All Stores and Regional targets stay saved. Only the selected mode is checked in the background.</p></details>
       <details><summary>Will every Steam wishlist game match?</summary><p>No. Some games have no verified match in the app’s game catalog. Review the matched games before saving; unmatched games cannot be monitored yet.</p></details>
       <details><summary>Is this a checkout or a game store?</summary><p>No. LazyDeals helps monitor prices and reported offers. Purchases and claims happen at the relevant store.</p></details>
     </div></section>
-    <section class="shell install" aria-labelledby="install-heading"><div><h2 id="install-heading">Ready to watch your list?</h2><p>Install the extension, choose a pricing mode, and set the targets that work for you.</p></div><div class="install-actions"><a class="store-badge" href="https://chromewebstore.google.com/detail/lazydeals/dlcikhpiigmpciddcdjclepnppcachni" aria-label="Get LazyDeals for Chrome on the Chrome Web Store"><img src="./assets/chrome-web-store-badge.png" alt="Available in the Chrome Web Store" width="340" height="96" loading="lazy"></a><a class="store-badge" href="https://microsoftedge.microsoft.com/addons/detail/lazydeals/hldbfjjaedkheeglkflhnkkppgeiihhm" aria-label="Get LazyDeals for Edge on Microsoft Edge Add-ons"><img src="./assets/edge-addons-badge.png" alt="Get it from Microsoft Edge" width="1178" height="312" loading="lazy"></a></div></section>
+    <section class="install-stage" aria-labelledby="install-heading"><div class="shell install"><div><h2 id="install-heading" class="scene-reveal" data-scroll>You pick the price. LazyDeals does the checking.</h2><p>Install on Chrome or Edge, add games you want, and set your targets. Get browser alerts for qualifying price drops.</p></div><div class="install-actions"><a class="store-badge" href="https://chromewebstore.google.com/detail/lazydeals/dlcikhpiigmpciddcdjclepnppcachni" aria-label="Get LazyDeals for Chrome on the Chrome Web Store"><img src="./assets/chrome-web-store-badge.png" alt="Available in the Chrome Web Store" width="340" height="96" loading="lazy"></a><a class="store-badge" href="https://microsoftedge.microsoft.com/addons/detail/lazydeals/hldbfjjaedkheeglkflhnkkppgeiihhm" aria-label="Get LazyDeals for Edge on Microsoft Edge Add-ons"><img src="./assets/edge-addons-badge.png" alt="Get it from Microsoft Edge" width="1178" height="312" loading="lazy"></a></div></div></section>
   </main>
-  <footer class="site-foot"><div class="shell foot-inner"><div class="foot-mark"><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</div><nav class="foot-links" aria-label="Footer"><a href="./help/">Help</a><a href="https://bahimehdi.github.io/lazydeals-privacy/">Privacy</a><a href="mailto:lazydeals.help@outlook.com">Contact</a></nav><p class="foot-last">PC game price monitoring for Chrome and Edge. Store availability and prices can change.</p></div></footer>
+  <footer class="site-foot"><div class="shell foot-inner"><div class="foot-mark"><img src="./assets/icon128.png" alt="" width="96" height="96" loading="lazy"><span><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></div><nav class="foot-links" aria-label="Footer"><a href="./help/">Help</a><a href="https://bahimehdi.github.io/lazydeals-privacy/">Privacy</a><a href="mailto:lazydeals.help@outlook.com">Contact</a></nav><p class="foot-last">PC game price monitoring for Chrome and Edge. Store availability and prices can change.</p></div></footer>
 </body>
 </html>
