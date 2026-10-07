@@ -2,11 +2,11 @@
 
 Static HTML/CSS/JavaScript for the product homepage and help page. There is no LazyDeals backend, analytics, or visitor-side call to the offer provider. The 100%-off rail loads a same-origin `offers.json` snapshot built by GitHub Actions.
 
-The homepage motion adapts the [Locomotive Scroll 5.0 landing demo](https://scroll.locomotive.ca/) using the exact self-hosted Locomotive Scroll 5.0.1 bundled runtime from its [MIT-licensed repository](https://github.com/locomotivemtl/locomotive-scroll). Its license is in `vendor/LICENSE`. Motion uses the upstream `data-scroll`, `data-scroll-speed`, and CSS-progress attributes. Narrow viewports and reduced-motion users get a static layout. The timed entry curtain is LazyDeals' own and is skipped for reduced motion. No runtime CDN is required.
+The homepage motion adapts the [Locomotive Scroll 5.0 landing demo](https://scroll.locomotive.ca/) using the exact self-hosted Locomotive Scroll 5.0.1 bundled runtime from its [MIT-licensed repository](https://github.com/locomotivemtl/locomotive-scroll). Its license is in `vendor/LICENSE`. Motion uses the upstream `data-scroll`, `data-scroll-speed`, and CSS-progress attributes. Narrow viewports get static scrolling; reduced-motion users get static scrolling and no curtain unless they explicitly enable animations. No runtime CDN is required.
 
 The site repository's `.github/workflows/refresh-offers.yml` runs on pushes, manual dispatch, and a three-hour schedule. It requests the Epic PC, Steam and GOG feeds once each, applies the same paid-PC-game filters as the extension, and deploys a Pages artifact. A failed feed request fails that run; the previous deployment remains, and the website stops displaying it as current after six hours. GitHub scheduled runs can be delayed or disabled after prolonged repository inactivity, so check Actions if the rail says its reports are unavailable.
 
-To preview locally, generate `offers.json` into a separate temporary copy of the site with `node scripts/build-offers.mjs <artifact-directory>/offers.json`, then serve that directory over HTTP. The browser requests only `offers.json` from its own origin; offer artwork is loaded from the HTTPS image URL in the report, with no referrer. Selecting an offer opens its FreeToKeep report page, where the visitor can continue to the store. No site-specific user data is saved.
+To preview locally, generate `offers.json` into a separate temporary copy of the site with `node scripts/build-offers.mjs <artifact-directory>/offers.json`, then serve that directory over HTTP. The browser requests only `offers.json` from its own origin; offer artwork is loaded from the HTTPS image URL in the report, with no referrer. Selecting an offer opens its FreeToKeep report page, where the visitor can continue to the store. Only the local animation preference described below is saved.
 
 ## Publication gates
 
@@ -17,5 +17,7 @@ To preview locally, generate `offers.json` into a separate temporary copy of the
 - The budget-bundle image is another isolated 1.1.0 UI capture: a staged $50 "Metroidvanias" bundle with Blasphemous, Hollow Knight, Hollow Knight: Silksong, Nine Sols, and Death's Door. Its expanded price breakdown and $49.45 total are illustrative fixture values, not current provider quotes.
 - In Settings → Pages, set the publishing Source to **GitHub Actions**. Branch-source Pages builds are not triggered by `GITHUB_TOKEN` workflow commits; this site deploys an artifact directly. Keep the existing `lazydeals.tech` custom domain and Enforce HTTPS setting.
 - The public privacy policy currently lives at `https://bahimehdi.github.io/lazydeals-privacy/`. Keep its disclosures aligned with the extension before linking it from a production site.
+
+The header animation control stores only the visitor's on/off motion preference in this site's localStorage (`lazydeals-motion`). With no saved choice, the OS reduced-motion preference is respected. Enabling animations replays the curtain; desktop parallax remains disabled on narrow screens. This preference is not transmitted.
 
 The extension runtime, permissions and storage are not modified by this site.

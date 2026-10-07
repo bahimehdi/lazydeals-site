@@ -39,6 +39,14 @@ h1, h2, h3 { min-width: 0; overflow-wrap: anywhere; }
 .head-links { display: flex; align-items: center; gap: var(--space-6); font: 700 .8rem/1.2 var(--font-ui); text-transform: uppercase; letter-spacing: .055em; }
 .head-links a { white-space: nowrap; text-decoration-thickness: 1px; text-underline-offset: .3em; }
 .head-links a:hover { color: var(--color-accent-hover); }
+.motion-toggle { font: inherit; text-transform: inherit; color: inherit; background: transparent; border: 1px solid currentColor; padding: .65rem; cursor: pointer; }
+.motion-toggle:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
+@media (max-width: 600px) { .head-inner { flex-wrap: wrap; padding-block: 1rem; } .head-links { flex-wrap: wrap; gap: 1rem; } }
+html.motion-off { scroll-behavior: auto; }
+html.motion-off .entry-curtain { display: none; }
+html.motion-off .hero-copy, html.motion-off .hero-visual { animation: none; }
+html.motion-off [data-scroll], html.motion-off .word-cascade span { transform: none !important; }
+html.motion-off .scene-reveal { opacity: 1; transition: none; }
 .hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; min-height: max(42rem, calc(100svh - 5.5rem)); padding-block: var(--space-16) var(--space-24); }
 .hero-copy, .hero-visual { position: relative; z-index: 1; }
 .hero-copy { animation: hero-arrive 550ms var(--ease-out) 1960ms both; }

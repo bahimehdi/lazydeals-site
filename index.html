@@ -13,7 +13,7 @@
   <meta property="og:image" content="https://lazydeals.tech/assets/watchlist-deaths-door.jpg">
   <meta property="og:image:alt" content="LazyDeals PC game watchlist with game artwork and price targets">
   <link rel="icon" href="./assets/icon128.png" type="image/png">
-  <script>if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get("motion") === "preview") document.documentElement.classList.add("motion-preview");</script>
+  <script>try { const choice = localStorage.getItem("lazydeals-motion"); if (choice === "on") document.documentElement.classList.add("motion-preview"); if (choice === "off") document.documentElement.classList.add("motion-off"); } catch {} if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get("motion") === "preview" && !document.documentElement.classList.contains("motion-off")) document.documentElement.classList.add("motion-preview");</script>
   <link rel="stylesheet" href="./vendor/locomotive-scroll.css">
   <link rel="stylesheet" href="./site.css">
   <script defer src="./vendor/locomotive-scroll.min.js"></script>
@@ -31,7 +31,7 @@
   <header class="site-head">
     <div class="shell head-inner">
       <a class="brand" href="./" aria-label="LazyDeals home"><img src="./assets/icon128.png" alt="" width="52" height="52"><span class="brand-name"><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></a>
-      <nav class="head-links" aria-label="Main navigation"><a class="help-link" href="./help/">How it works</a></nav>
+      <nav class="head-links" aria-label="Main navigation"><button class="motion-toggle" type="button" hidden>Enable animations</button><a class="help-link" href="./help/">How it works</a></nav>
     </div>
   </header>
   <main id="main">
