@@ -13,12 +13,13 @@
   <meta property="og:image" content="https://lazydeals.tech/assets/watchlist-deaths-door.jpg">
   <meta property="og:image:alt" content="LazyDeals PC game watchlist with game artwork and price targets">
   <link rel="icon" href="./assets/icon128.png" type="image/png">
-  <script>try { const choice = localStorage.getItem("lazydeals-motion"); if (choice === "on") document.documentElement.classList.add("motion-preview"); if (choice === "off") document.documentElement.classList.add("motion-off"); } catch {} if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get("motion") === "preview" && !document.documentElement.classList.contains("motion-off")) document.documentElement.classList.add("motion-preview");</script>
+  <script>if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get("motion") === "preview") document.documentElement.classList.add("motion-preview");</script>
   <link rel="stylesheet" href="./vendor/locomotive-scroll.css">
-  <link rel="stylesheet" href="./site.css?v=20261007-3">
+  <link rel="stylesheet" href="./site.css?v=20261008-1">
   <script defer src="./vendor/locomotive-scroll.min.js"></script>
-  <script defer src="./motion.js?v=20261007-3"></script>
+  <script defer src="./motion.js?v=20261008-1"></script>
   <script type="module" src="./offers.js"></script>
+  <script defer src="./contact.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +32,7 @@
   <header class="site-head">
     <div class="shell head-inner">
       <a class="brand" href="./" aria-label="LazyDeals home"><img src="./assets/icon128.png" alt="" width="52" height="52"><span class="brand-name"><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></a>
-      <nav class="head-links" aria-label="Main navigation"><button class="motion-toggle" type="button" hidden>Enable animations</button><a class="help-link" href="./help/">How it works</a></nav>
+      <nav class="head-links" aria-label="Main navigation"><a class="help-link" href="./help/">How it works</a></nav>
     </div>
   </header>
   <main id="main">
@@ -65,7 +66,7 @@
       <p class="offer-footnote">LazyDeals can notify you about these offers in the extension. The notification switch does not hide them.</p>
       </div>
     </section>
-    <div class="statement-band"><div class="shell plain-intro"><strong>One watchlist.<br>Two ways to check prices.</strong><p>Choose the mode that fits how you shop. Your saved targets remain when you switch modes; only the selected mode runs background checks.</p></div><div class="word-cascade" data-scroll data-scroll-css-progress aria-hidden="true"><span style="--drift: -26vw">ONE WATCHLIST</span><span style="--drift: 19vw">ONE WATCHLIST</span><span style="--drift: -13vw">ONE WATCHLIST</span><span style="--drift: 23vw">ONE WATCHLIST</span><span style="--drift: -20vw">ONE WATCHLIST</span></div></div>
+    <div class="statement-band"><div class="shell plain-intro"><strong>One watchlist.<br>Two ways to check prices.</strong><p>Choose the mode that fits how you shop. Your saved targets remain when you switch modes; only the selected mode runs background checks.</p></div><div class="word-cascade" data-scroll data-scroll-css-progress aria-hidden="true"><span style="--drift: -26vw">ONE WATCHLIST</span><span style="--drift: 19vw">YOUR PRICE</span><span style="--drift: -13vw">MORE STORES</span><span style="--drift: 23vw">LESS CHECKING</span><span style="--drift: -20vw">GET ALERTS</span></div></div>
     <section class="section shell modes-stage" aria-labelledby="modes-heading">
       <h2 id="modes-heading">Pick the price that matters to you.</h2>
       <div class="mode-grid">
@@ -78,8 +79,8 @@
       <ol class="import-steps" aria-label="Steam wishlist import steps"><li data-scroll data-scroll-speed="0.12" data-scroll-enable-touch-speed><strong>Copy</strong><span>Use Steam’s wishlist Share link.</span></li><li data-scroll data-scroll-speed="0.04" data-scroll-enable-touch-speed><strong>Review</strong><span>Check matched games and targets.</span></li><li data-scroll data-scroll-speed="-0.06" data-scroll-enable-touch-speed><strong>Save</strong><span>Track only the games you choose.</span></li></ol>
     </section>
     <section class="section shell proof reverse" aria-labelledby="bundles-heading">
-      <div class="proof-copy"><span class="budget-figure" aria-hidden="true" data-scroll data-scroll-speed="0.28" data-scroll-enable-touch-speed>$50</span><h2 id="bundles-heading" class="scene-reveal" data-scroll>A budget for the whole group.</h2><p>Put at least two watched games in a budget bundle. LazyDeals totals each game’s current eligible price and can alert you when the group falls under your saved budget or drops further.</p><p class="muted">Bundle budgets are separate for All Stores and Regional pricing. A bundle is a shopping plan, not a store-sold package.</p></div>
-      <figure class="proof-image" data-scroll data-scroll-speed="-0.16" data-scroll-enable-touch-speed><div class="screenshot"><img src="./assets/bundles-metroidvanias.jpg" alt="Metroidvanias budget bundle with Blasphemous, Hollow Knight, Hollow Knight: Silksong, Nine Sols, and Death's Door under a $50 budget" width="870" height="440" loading="lazy"></div><figcaption>Example $50 bundle. Displayed game prices are staged, not live offers.</figcaption></figure>
+      <div class="proof-copy"><span class="budget-figure" aria-hidden="true" data-scroll data-scroll-speed="0.28" data-scroll-enable-touch-speed>$49.99</span><h2 id="bundles-heading" class="scene-reveal" data-scroll>A budget for the whole group.</h2><p>Put at least two watched games in a budget bundle. LazyDeals totals each game’s current eligible price and can alert you when the group falls under your saved budget or drops further.</p><p class="muted">Bundle budgets are separate for All Stores and Regional pricing. A bundle is a shopping plan, not a store-sold package.</p></div>
+      <figure class="proof-image" data-scroll data-scroll-speed="-0.16" data-scroll-enable-touch-speed><div class="screenshot"><img src="./assets/bundles-metroidvanias.jpg" alt="Metroidvanias budget bundle with Blasphemous, Hollow Knight, Hollow Knight: Silksong, Nine Sols, and Death's Door under a $49.99 budget across multiple stores" width="870" height="440" loading="lazy"></div><figcaption>Example $49.99 bundle. Displayed game prices are staged, not live offers.</figcaption></figure>
     </section>
     <section class="section shell faq" aria-labelledby="questions-heading"><h2 id="questions-heading" class="scene-reveal" data-scroll>Before you install.</h2><div class="faq-list">
       <details><summary>Do I need an account?</summary><p>No LazyDeals account is required. Your watchlist choices are saved through your browser’s extension storage. <a href="https://bahimehdi.github.io/lazydeals-privacy/">Read the privacy policy</a>.</p></details>
@@ -89,6 +90,21 @@
     </div></section>
     <section class="install-stage" aria-labelledby="install-heading"><div class="shell install"><div><h2 id="install-heading" class="scene-reveal" data-scroll>You pick the price. LazyDeals does the checking.</h2><p>Install on Chrome or Edge, add games you want, and set your targets. Get browser alerts for qualifying price drops.</p></div><div class="install-actions"><a class="store-badge" href="https://chromewebstore.google.com/detail/lazydeals/dlcikhpiigmpciddcdjclepnppcachni" aria-label="Get LazyDeals for Chrome on the Chrome Web Store"><img src="./assets/chrome-web-store-badge.png" alt="Available in the Chrome Web Store" width="340" height="96" loading="lazy"></a><a class="store-badge" href="https://microsoftedge.microsoft.com/addons/detail/lazydeals/hldbfjjaedkheeglkflhnkkppgeiihhm" aria-label="Get LazyDeals for Edge on Microsoft Edge Add-ons"><img src="./assets/edge-addons-badge.png" alt="Get it from Microsoft Edge" width="1178" height="312" loading="lazy"></a></div></div></section>
   </main>
-  <footer class="site-foot"><div class="shell foot-inner"><div class="foot-mark"><img src="./assets/icon128.png" alt="" width="96" height="96" loading="lazy"><span><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></div><nav class="foot-links" aria-label="Footer"><a href="./help/">Help</a><a href="https://bahimehdi.github.io/lazydeals-privacy/">Privacy</a><a href="mailto:lazydeals.help@outlook.com">Contact</a></nav><p class="foot-last">PC game price monitoring for Chrome and Edge. Store availability and prices can change.</p></div></footer>
+  <section class="shell contact-section" id="contact" aria-labelledby="contact-heading">
+    <div class="contact-copy"><h2 id="contact-heading">Something not<br>working?</h2><p>Report a bug, ask a question, or suggest something for LazyDeals.</p><p class="muted">For a bug, include your browser and what happened. Don’t include passwords or private Steam wishlist links.</p><a class="contact-email" href="mailto:lazydeals.help@outlook.com">lazydeals.help@outlook.com</a></div>
+    <form id="contact-form" action="https://formspree.io/f/mrpeporn" method="post" aria-describedby="contact-privacy">
+      <label for="contact-email">Your email <span>(required)</span></label>
+      <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="contact-email-error">
+      <p class="field-message" id="contact-email-error"></p>
+      <label for="contact-message">Message <span>(required)</span></label>
+      <textarea id="contact-message" name="message" rows="5" required maxlength="5000" aria-describedby="contact-message-error"></textarea>
+      <p class="field-message" id="contact-message-error"></p>
+      <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p id="contact-privacy" class="small-note">Sending shares your email and message with LazyDeals through Formspree, which processes and stores submissions. Don’t send sensitive information. <a href="https://formspree.io/legal/privacy-policy/">Formspree privacy policy</a>.</p>
+      <button class="button" type="submit">Send message</button>
+      <p id="contact-status" class="small-note" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+  <footer class="site-foot"><div class="shell foot-inner"><div class="foot-mark"><img src="./assets/icon128.png" alt="" width="96" height="96" loading="lazy"><span><span class="brand-l">L</span>azy<span class="brand-d">D</span>eals</span></div><nav class="foot-links" aria-label="Footer"><a href="./help/">Help</a><a href="https://bahimehdi.github.io/lazydeals-privacy/">Privacy</a><a href="#contact">Contact</a></nav><p class="foot-last">PC game price monitoring for Chrome and Edge. Store availability and prices can change.</p></div></footer>
 </body>
 </html>
