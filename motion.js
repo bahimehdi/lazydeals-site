@@ -4,12 +4,7 @@ document.addEventListener("animationend", (event) => {
   if (event.target.matches(".entry-curtain") && event.animationName === "curtain-lift") event.target.remove();
 });
 
-const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const desktop = window.matchMedia("(min-width: 801px)");
-const root = document.documentElement;
-function motionEnabled() {
-  return !motionPreference.matches || root.classList.contains("motion-preview");
-}
 let scroll;
 
 if ("scrollRestoration" in history && !location.hash) {
@@ -18,7 +13,7 @@ if ("scrollRestoration" in history && !location.hash) {
 }
 
 function syncScroll() {
-  const enabled = desktop.matches && motionEnabled();
+  const enabled = desktop.matches;
   if (enabled && !scroll && typeof window.LocomotiveScroll === "function") {
     scroll = new window.LocomotiveScroll();
     document.documentElement.classList.add("motion-active");
@@ -34,5 +29,4 @@ function syncScroll() {
 }
 
 desktop.addEventListener("change", syncScroll);
-motionPreference.addEventListener("change", syncScroll);
 syncScroll();

@@ -194,8 +194,6 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  html:not(.motion-preview) .entry-curtain { display: none; }
-  html:not(.motion-preview) .hero-copy, html:not(.motion-preview) .hero-visual { animation: none; }
   .button { transition: none; }
   .offer-track { scroll-behavior: auto; }
 }
@@ -274,10 +272,6 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
   .plain-intro strong { font-size: clamp(3rem, 12vw, 5rem); }
   .proof:not(.reverse) { padding-inline: var(--space-4); }
 }
-@media (prefers-reduced-motion: reduce) {
-  html:not(.motion-preview) .hero-copy, html:not(.motion-preview) .hero-visual { animation: none; }
-  html:not(.motion-preview) [data-scroll] { transform: none !important; }
-}
 
 /* Demo-derived scene composition: cascade + sticky chapter + paired parallax layers. */
 .hero-stage::after { content: ""; position: absolute; inset: auto 0 0; height: 43%; background: var(--color-app-surface); pointer-events: none; }
@@ -341,10 +335,6 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
   .word-cascade span { font-size: 17vw; }
   .proof:not(.reverse) .import-steps li { min-height: 7rem; }
   .proof:not(.reverse) .import-steps strong { font-size: 3rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html:not(.motion-preview) .word-cascade span { transform: none; }
-  html:not(.motion-preview) .scene-reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Contact preview inherits the existing editorial typography and palette. */
