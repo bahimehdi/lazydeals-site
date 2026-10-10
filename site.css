@@ -54,8 +54,19 @@ h1, h2, h3 { min-width: 0; overflow-wrap: anywhere; }
 .hero h1 .accent { color: var(--color-accent); }
 .lead { max-width: 34rem; margin: 0; font-size: clamp(1.22rem, 1.7vw, 1.55rem); line-height: 1.45; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-8); }
-.store-badge { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
-.store-badge img { width: 13rem; height: auto; }
+/* Owner-approved C2c concept: organic outline, transparent surface, live text. */
+.store-badge { position: relative; display: inline-flex; align-items: center; gap: .65rem; flex: none; width: 15.75rem; max-width: 100%; min-height: 4.5rem; padding: .8rem 1rem; color: inherit; text-decoration: none; border-radius: 2rem; }
+.store-contour { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.store-contour path { vector-effect: non-scaling-stroke; }
+.store-mark { display: block; flex: none; width: 2.75rem; height: 2.75rem; }
+.store-mark img { width: 100%; height: 100%; object-fit: contain; }
+.store-mark--chrome { position: relative; height: 2.375rem; overflow: hidden; }
+.store-mark--chrome img { position: absolute; width: 12.8125rem; max-width: none; height: auto; left: -.90625rem; top: -.640625rem; }
+.store-label { display: flex; flex-direction: column; gap: .12rem; font: .75rem/1.2 var(--font-ui); white-space: nowrap; }
+.store-label strong { font-size: 1.05rem; font-weight: 650; letter-spacing: -.035em; }
+.store-badge:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+@media (hover: hover) { .store-badge:hover .store-contour { stroke-width: 2; } }
+.store-badge:active { transform: translateY(1px); }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: var(--space-3) var(--space-6); border: var(--rule-thin) solid var(--color-accent); background: var(--color-accent); color: var(--color-accent-ink); font: 900 .78rem/1.1 var(--font-ui); letter-spacing: .07em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), transform 100ms var(--ease-out); }
 .button:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
 .button:active { transform: translateY(1px); }
