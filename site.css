@@ -249,7 +249,7 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 .proof h2 { max-width: 12ch; font-size: clamp(3.5rem, 7vw, 7.5rem); line-height: .96; }
 .proof:not(.reverse) { width: 100%; max-width: none; grid-template-columns: minmax(0, 1fr) minmax(0, .7fr); padding-inline: max(1.5rem, calc((100vw - 84rem) / 2)); background: var(--color-accent); color: var(--color-paper); }
 .proof:not(.reverse) .muted { color: var(--color-paper); }
-.proof:not(.reverse) a:hover { color: var(--color-paper); opacity: .7; }
+.proof:not(.reverse) .proof-copy a:hover { color: var(--color-paper); opacity: .7; }
 .proof:not(.reverse) .import-steps { border-top-color: var(--color-paper); }
 .proof:not(.reverse) .import-steps li { border-bottom-color: var(--color-paper); }
 .proof:not(.reverse) .import-steps li::before, .proof:not(.reverse) .import-steps span { color: var(--color-paper); }
@@ -303,8 +303,9 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 .offer-status { margin-top: var(--space-8); }
 .statement-band { padding-bottom: var(--space-12); }
 .plain-intro { padding-block: clamp(6rem, 10vw, 10rem) var(--space-8); }
-.word-cascade { display: grid; align-content: center; gap: 0; min-height: 73svh; overflow: clip; padding-block: var(--space-8); }
-.word-cascade span { display: block; width: max-content; white-space: nowrap; font: 900 clamp(5rem, 13vw, 13rem)/.81 var(--font-display); letter-spacing: -.095em; opacity: .25; transform: translate3d(calc(var(--progress, 0) * var(--drift)), 0, 0); }
+.word-cascade { display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; justify-items: center; gap: 0; min-height: 73svh; overflow: clip; padding-block: var(--space-8); }
+.word-cascade span { display: block; width: max-content; white-space: nowrap; font: 900 clamp(3rem, 12vw, 13rem)/.81 var(--font-display); letter-spacing: -.095em; opacity: .25; }
+.motion-active .word-cascade span { transform: translate3d(calc((var(--progress, .5) - .5) * var(--drift)), 0, 0); }
 .word-cascade span:nth-child(2), .word-cascade span:nth-child(4) { opacity: .75; }
 .word-cascade span:nth-child(3) { opacity: 1; }
 .modes-stage { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; min-height: 160svh; }
@@ -331,7 +332,7 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 
 @media (max-width: 800px) {
   .word-cascade { min-height: 38svh; }
-  .word-cascade span { font-size: clamp(4rem, 16vw, 8rem); }
+  .word-cascade span { font-size: 12vw; }
   .modes-stage { display: block; min-height: 0; }
   .modes-stage h2, .faq h2 { position: static; }
   .modes-stage .mode-grid { margin-top: var(--space-16); gap: var(--space-12); }
@@ -343,7 +344,7 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 @media (max-width: 580px) {
   .hero-stage::after { height: 33%; }
   .word-cascade { min-height: 30svh; }
-  .word-cascade span { font-size: 17vw; }
+  .word-cascade span { font-size: 12vw; }
   .proof:not(.reverse) .import-steps li { min-height: 7rem; }
   .proof:not(.reverse) .import-steps strong { font-size: 3rem; }
 }
@@ -366,3 +367,43 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 #contact-status { min-height: 3em; }
 @media (hover: hover) { #contact-form input:hover, #contact-form textarea:hover { background: var(--color-paper-raised); } }
 @media (max-width: 800px) { .contact-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-16); } }
+
+/* Extension-first explanation. Existing palette, curtain and scroll choreography stay. */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .8fr); align-items: center; min-height: 0; padding-block: 9rem var(--space-12); }
+.hero h1 { font-size: clamp(3rem, 5.3vw, 6rem); letter-spacing: -.07em; }
+.hero .lead { max-width: 33ch; font-size: clamp(1.15rem, 1.8vw, 1.5rem); }
+.hero-visual { width: 100%; max-width: 27rem; margin: 0 0 0 auto; padding-bottom: var(--space-4); }
+.popup-demo { position: relative; max-width: 20rem; aspect-ratio: 380 / 455; overflow: clip; margin-left: auto; }
+.popup-demo img { position: absolute; inset: 0; width: 100%; height: auto; }
+.notification-demo { position: relative; width: min(100%, 21.75rem); margin: var(--space-4) auto 0 0; }
+.notification-demo img { width: 100%; height: auto; }
+.notification-demo span { display: block; padding-top: var(--space-3); font: 700 .85rem/1.5 var(--font-ui); }
+.hero-visual figcaption { color: var(--color-paper); max-width: 43ch; }
+.hero-stage::after { display: none; }
+.hero-endline { color: var(--color-paper); border-color: var(--color-paper); }
+.hero-endline a:hover { color: var(--color-paper); text-decoration: underline; }
+.plain-intro { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; padding-block: var(--space-16) var(--space-8); }
+.plain-intro h2 { margin: 0 0 var(--space-6); font: 900 clamp(2.5rem, 5vw, 5rem)/1 var(--font-display); letter-spacing: -.065em; }
+.plain-intro img, .import-demo img { width: 100%; height: auto; }
+.plain-intro figcaption, .import-demo figcaption { color: var(--color-paper); }
+.demo-key { font: 700 1rem/1.6 var(--font-ui); }
+.modes-stage { min-height: 0; padding-block: var(--space-24); }
+.modes-stage .mode-grid { margin-top: var(--space-12); gap: var(--space-16); }
+.modes-stage .mode { min-height: 0; }
+.modes-stage .mode h3 { margin-bottom: var(--space-6); font-size: clamp(2.6rem, 4vw, 4rem); }
+.mode-facts { list-style: none; margin: 0; padding: 0; font: 1.125rem/1.5 var(--font-ui); }
+.mode-facts li { padding-block: var(--space-3); border-bottom: var(--rule-thin) solid var(--color-rule); }
+.proof:not(.reverse) { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--space-12); min-height: 0; padding-block: var(--space-24); }
+.demo-steps { padding-left: var(--space-6); font: 700 1.1rem/1.6 var(--font-ui); }
+.demo-steps li { padding-block: var(--space-2); }
+.proof.reverse { min-height: 0; padding-block: var(--space-24); }
+@media (max-width: 800px) {
+  .hero, .plain-intro, .proof:not(.reverse) { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-top: 8rem; }
+  .hero h1 { font-size: clamp(2.8rem, 9vw, 5rem); }
+  .hero-visual { margin: var(--space-8) auto 0; max-width: 25rem; }
+  .plain-intro { gap: var(--space-8); }
+  .modes-stage { padding-block: var(--space-16); }
+  .modes-stage .mode-grid { margin-top: var(--space-8); gap: var(--space-12); }
+  .word-cascade span { font-size: 12vw; }
+}
