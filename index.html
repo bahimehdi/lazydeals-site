@@ -95,10 +95,10 @@
     <div class="contact-copy"><h2 id="contact-heading">Something not<br>working?</h2><p>Report a bug, ask a question, or suggest something for LazyDeals.</p><p class="muted">For a bug, include your browser and what happened. Don’t include passwords or private Steam wishlist links.</p><a class="contact-email" href="mailto:lazydeals.help@outlook.com">lazydeals.help@outlook.com</a></div>
     <form id="contact-form" action="https://formspree.io/f/mrpeporn" method="post" aria-describedby="contact-privacy">
       <label for="contact-email">Your email <span>(required)</span></label>
-      <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="contact-email-error">
+      <input id="contact-email" name="email" type="email" autocomplete="off" required maxlength="254" aria-describedby="contact-email-error">
       <p class="field-message" id="contact-email-error"></p>
       <label for="contact-message">Message <span>(required)</span></label>
-      <textarea id="contact-message" name="message" rows="5" required maxlength="5000" aria-describedby="contact-message-error"></textarea>
+      <textarea id="contact-message" name="message" rows="5" autocomplete="off" required maxlength="5000" aria-describedby="contact-message-error"></textarea>
       <p class="field-message" id="contact-message-error"></p>
       <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" aria-hidden="true">
       <p id="contact-privacy" class="small-note">Sending shares your email and message with LazyDeals through Formspree, which processes and stores submissions. Don’t send sensitive information. <a href="https://formspree.io/legal/privacy-policy/">Formspree privacy policy</a>.</p>

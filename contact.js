@@ -1,5 +1,6 @@
 // Formspree receives submissions; no inbox credentials or local storage are used.
 const form = document.querySelector("#contact-form");
+form.noValidate = true;
 const fields = [...form.querySelectorAll("input[required], textarea[required]")];
 const button = form.querySelector("button");
 let sending = false;
@@ -8,8 +9,11 @@ const touched = new Set();
 function validate(field) {
   const valid = field.validity.valid && field.value.trim().length > 0;
   field.setAttribute("aria-invalid", String(!valid));
+  const empty = !field.value.trim();
   document.getElementById(`${field.id}-error`).textContent = valid ? "" :
-    field.type === "email" ? "Enter a valid email address so we can reply." : "Write a message before continuing.";
+    field.type === "email"
+      ? (empty ? "Enter your email address." : "Enter a valid email address so we can reply.")
+      : "Write a message before sending.";
   return valid;
 }
 for (const field of fields) {

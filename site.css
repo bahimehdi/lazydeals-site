@@ -360,8 +360,9 @@ figcaption { margin-top: var(--space-3); color: var(--color-muted); font: .72rem
 #contact-form input, #contact-form textarea { min-width: 0; width: 100%; min-height: 3.25rem; padding: var(--space-3); border: 1px solid var(--color-rule); background: var(--color-paper); color: var(--color-ink); font: inherit; border-radius: var(--radius-none); }
 #contact-form textarea { resize: vertical; min-height: 10rem; }
 #contact-form :is(input, textarea, button):focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
-#contact-form [aria-invalid="true"] { border-color: var(--color-brand-red); }
-.field-message { min-height: 1.5em; margin: var(--space-1) 0 var(--space-4); color: var(--color-brand-red); font-size: .85rem; }
+#contact-form :is(input, textarea):focus-visible { outline-color: var(--color-accent); }
+#contact-form [aria-invalid="true"] { box-shadow: inset 0 -2px 0 var(--color-brand-red); }
+.field-message { min-height: 1.5em; margin: var(--space-1) 0 var(--space-4); color: var(--color-ink); font-size: .85rem; }
 #contact-form .button { justify-self: start; cursor: pointer; }
 #contact-form .button:disabled { opacity: .5; cursor: not-allowed; }
 #contact-status { min-height: 3em; }
