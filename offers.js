@@ -78,7 +78,7 @@ function showOffers(snapshot) {
   track.replaceChildren(...offers.map(makeCard));
   status.textContent = offers.length
     ? `${offers.length} current reported ${offers.length === 1 ? "offer" : "offers"}. Updated ${new Date(snapshot.generatedAt).toLocaleString()}.`
-    : "No current 100%-off PC game reports at the last update.";
+    : "No verified limited-time game giveaways at the last update.";
   updateArrows();
   const staleAt = Date.parse(snapshot.generatedAt) + SNAPSHOT_MAX_AGE_MS;
   expiryTimer = setTimeout(() => showOffers(snapshot), Math.max(1,

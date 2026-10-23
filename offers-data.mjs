@@ -1,6 +1,10 @@
-export const STORES = Object.freeze(["epic-pc", "steam", "gog"]);
-const STORE_LABELS = { "epic-pc": "Epic Games Store", steam: "Steam", gog: "GOG" };
-const EXCLUDED = /\b(dlc|add[ -]?on|bundle|free[ -]?weekend|weekend|demo|beta|key|points|mobile|android|ios|prime|subscription)\b/i;
+export const STORES = Object.freeze(["steam", "epic-pc", "epic-android", "epic-ios", "gog", "ubisoft"]);
+const STORE_LABELS = { steam: "Steam", "epic-pc": "Epic Games Store · PC",
+  "epic-android": "Epic Games Store · Android", "epic-ios": "Epic Games Store · iOS",
+  gog: "GOG", ubisoft: "Ubisoft" };
+const EXCLUDED = /\b(dlc|add[ -]?on|bundle|free[ -]?weekend|weekend|demo|beta|key|points|prime|subscription)\b/i;
+const WRONG_PLATFORM = { "epic-pc": /\b(mobile|android|ios)\b/i,
+  "epic-android": /\bios\b/i, "epic-ios": /\bandroid\b/i };
 export const SNAPSHOT_MAX_AGE_MS = 6 * 60 * 60 * 1000;
 
 function httpsUrl(value, hostname = null) {
@@ -18,7 +22,7 @@ function paidPrice(value) {
 
 export function normalizeOffer(row, store, now = Date.now()) {
   if (!row || !STORES.includes(store) ||
-      !(row.store === store || (store === "epic-pc" && row.store === "epic_pc"))) return null;
+      !(row.store === store || (store.startsWith("epic-") && row.store === store.replace("-", "_")))) return null;
   const id = typeof row.id === "string" ? row.id.trim() : "";
   const title = typeof row.title === "string" ? row.title.trim() : "";
   const tags = Array.isArray(row.tags) ? row.tags : [];
@@ -31,6 +35,8 @@ export function normalizeOffer(row, store, now = Date.now()) {
       !paidPrice(row.originalPrice) ||
       !tags.some(tag => typeof tag === "string" && tag.toLowerCase() === "game") ||
       tags.some(tag => typeof tag !== "string" || EXCLUDED.test(tag)) ||
+      tags.some(tag => WRONG_PLATFORM[store]?.test(tag)) ||
+      (!store.startsWith("epic-") && tags.some(tag => /\b(mobile|android|ios)\b/i.test(tag))) ||
       EXCLUDED.test(title)) return null;
   return {
     key: `${store}:${id}`, id, store, storeLabel: STORE_LABELS[store], title,
